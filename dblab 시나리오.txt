@@ -1,0 +1,7 @@
+목적: lost update 확인, @Transactional에서도 동시성이 보장 안되는 상황 확인. 
+
+mode: atomic, unsafe
+atomic : sql 에서 where >0 조건으로 재고감소만.
+unsafe: 재고 조회후 재고감소. 동시성 문제가 생길 수 있음.
+
+concurrentTest: 멀티스레드로 atomic, unsafe 재고감소. 재고감소 자체가 실패하는 경우 = 오류이거나 재고가 0이되는 상황이 일어남.
